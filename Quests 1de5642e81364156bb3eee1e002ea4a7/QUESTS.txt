@@ -1,0 +1,23 @@
+Quests - Férias
+- Apps Scripts - tornar em biblioteca -> será aprofundado
+*Frontend-Backend
+- Finalizar tabuleiro
+- Resgate de Horas/avanço
+- Planejar os Feedbakcs e definir quais informações de validação o backend deve enviar de volta
+- Enviar certificado por email e guardar pdf no banco de dados para criar um histórico de certificados
+- Histórico de recompensas
+- Trabalhar na lógica do tabuleiro
+- Buscar deixar a aplicação mais fluida
+- Trabalhar nas micro interações
+- Estudar react-bootstrap
+- Reestruturar o front end e organizar as lógicas de negócio
+- Estudar como dar reaload nas páginas sem quebrar a UX
+- Estudar como criar vários contextos
+- Estudar como condicionar jsx de forma correta
+- Melhorar as lógicas de estados
+- Melhorar paginação
+- Landing Page
+- Confirmação de cadastro ? Acredito que seria uma barreira a mais
+- Recomendação por cálculo demográfico
+- Melhorar o banco de dados e pesquisa de questionários
+- Html da página de códigos ---> dependendo da proporção o perfil de pesquisador pode demorar.

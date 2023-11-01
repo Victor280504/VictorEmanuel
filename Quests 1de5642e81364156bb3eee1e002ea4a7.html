@@ -1,0 +1,687 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Quests</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="1de5642e-8136-4156-bb3e-ee1e002ea4a7" class="page sans"><header><img class="page-cover-image" src="Quests%201de5642e81364156bb3eee1e002ea4a7/Frame_212.svg" style="object-position:center 57.87%"/><div class="page-header-icon page-header-icon-with-cover"><img class="icon" src="Quests%201de5642e81364156bb3eee1e002ea4a7/LupaQuests.svg"/></div><h1 class="page-title">Quests</h1><p class="page-description"></p></header><div class="page-body"><figure id="7676b0fc-9480-43d0-8771-c09655c90fb3" class="image" style="text-align:center"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/logoQuestsOficial.svg"><img style="width:352px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/logoQuestsOficial.svg"/></a></figure><h2 id="704349db-4bd3-4242-b8b4-f7374f78dc62" class="">🏗️ Project</h2><figure id="71795db3-6c73-4414-a760-ffaf815f109e"><div class="source">https://github.com/smdlinos/Projeto_Linos</div></figure><h2 id="6d9eb777-cca4-478d-8eb3-b2e9ddd2b625" class="">🌎 Presentation</h2><figure id="385d83bb-4e48-4a9d-b140-24880a68d4b3"><div class="source"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/CHECKPOINT_4.pdf">Quests</a></div></figure><h2 id="3324c782-dfc9-4987-a1f4-2f38ac13da74" class="">📒 Technical report</h2><figure id="f1ce4e2c-f4dd-4484-80a9-2a7c79575f9b"><div class="source"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/Relatrio_Tcnico_Quests.pdf">Technical Report Development Quests</a></div></figure><h1 id="d30c7b62-a9a2-4d71-b7f2-ab3815afd065" class="">🔍 <a href="https://quests-iota.vercel.app">Quests</a></h1><p id="52aab82a-740d-463a-837d-8f58ca59181b" class="">Quests is a Web application that is being developed for the professor of the System and Digital Media - UFC course, Ticanne Darin, to meet the demand for questionnaires from the Célula Multimídia research group for which she is responsible. The purpose of the application is to disseminate questionnaires and increase the adherence and engagement of respondents through a reward system. The platform&#x27;s target audience are researchers, people responsible for collecting data through questionnaires, and respondents, people interested in answering questionnaires, thus having two user profiles, which can be combined: the researcher, who will use the platform to share the link to your questionnaire; and the respondent who, through the platform, will access the form&#x27;s link, fill it out and accumulate rewards in his profile.</p><h2 id="371878d9-567f-46bc-89b4-0441ff3fd474" class="">🚥 Features</h2><table id="278197eb-d638-4a1b-b8d9-7de4354883cd" class="simple-table"><tbody><tr id="3f0e8c51-b007-4235-af93-f7d18b03bbc1"><td id="?knp" class="" style="width:213px">Código</td><td id="HOtw" class="" style="width:346px">Descrição</td><td id="CWrV" class="" style="width:201.84375px">Status</td></tr><tr id="804aa7fe-1e38-48a0-a8ff-717b2a862288"><td id="?knp" class="" style="width:213px">RF0001</td><td id="HOtw" class="" style="width:346px">Fazer cadastro do usuário</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="8ac66abe-0850-4f58-8160-fedac3559184"><td id="?knp" class="" style="width:213px">RF0002</td><td id="HOtw" class="" style="width:346px">Entrar como visitante</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="9a9a6e4f-bded-4e12-8e9a-3d296ca24ca1"><td id="?knp" class="" style="width:213px">RF0003</td><td id="HOtw" class="" style="width:346px">Fazer login de usuário</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="d528a8d3-f57b-43ef-ba28-5143f2c553ff"><td id="?knp" class="" style="width:213px">RF0004</td><td id="HOtw" class="" style="width:346px">Recuperar senha</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="1667e1bb-e88a-46ec-8234-976407957334"><td id="?knp" class="" style="width:213px">RF0005</td><td id="HOtw" class="" style="width:346px">Visualizar tela principal</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="62aed7e6-3523-4dbc-842f-351cbaff8622"><td id="?knp" class="" style="width:213px">RF0006</td><td id="HOtw" class="" style="width:346px">Acessar perfil do usuário</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="3ce27a91-5a71-4f59-a428-cba81b5d0cf7"><td id="?knp" class="" style="width:213px">RF0007</td><td id="HOtw" class="" style="width:346px">Cadastrar/Atualizar informações do perfil</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="195c0ad2-ace5-4509-b3db-a2dc366f0dd3"><td id="?knp" class="" style="width:213px">RF0008</td><td id="HOtw" class="" style="width:346px">Visualizar registro de recompensas</td><td id="CWrV" class="" style="width:201.84375px">EM DESENVOLVIMENTO</td></tr><tr id="6f5c11d2-15e4-4a14-832c-9a5f0edd46a1"><td id="?knp" class="" style="width:213px">RF0009</td><td id="HOtw" class="" style="width:346px">Visualizar progresso no tabuleiro</td><td id="CWrV" class="" style="width:201.84375px">EM DESENVOLVIMENTO</td></tr><tr id="7c6a1d6d-f008-47a9-ba01-c2619bbc8673"><td id="?knp" class="" style="width:213px">RF0010</td><td id="HOtw" class="" style="width:346px">Gerar certificado de horas complementares</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="8483918f-eef2-4287-b0bf-e1ddaaf6d88c"><td id="?knp" class="" style="width:213px">RF0011</td><td id="HOtw" class="" style="width:346px">Buscar um questionário</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="a46c2741-0907-4ec0-afc6-7bc6ea85cb98"><td id="?knp" class="" style="width:213px">RF0012</td><td id="HOtw" class="" style="width:346px">Acessar link para responder questionário</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="f10a4994-f2c3-4e6e-8f77-da188092836a"><td id="?knp" class="" style="width:213px">RF0013</td><td id="HOtw" class="" style="width:346px">Receber feedbacks de progresso no tabuleiro</td><td id="CWrV" class="" style="width:201.84375px">EM DESENVOLVIMENTO</td></tr><tr id="01050481-b349-4c03-bda4-f53a3987cea9"><td id="?knp" class="" style="width:213px">RF0014</td><td id="HOtw" class="" style="width:346px">Gerar recomendações de questionário</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="131c8e8b-18d2-4d81-bd4a-214e6d07b59a"><td id="?knp" class="" style="width:213px">RF0015</td><td id="HOtw" class="" style="width:346px">Customização do personagem</td><td id="CWrV" class="" style="width:201.84375px">EM DESENVOLVIMENTO</td></tr><tr id="80cd6dba-a222-44b8-9400-ef0423505eed"><td id="?knp" class="" style="width:213px">RF0016</td><td id="HOtw" class="" style="width:346px">Acessar Landing Page</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="0050af27-2a75-4409-a204-1fd3cd3d02ad"><td id="?knp" class="" style="width:213px">RF0017</td><td id="HOtw" class="" style="width:346px">Deletar Perfil</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="138244e4-d65a-411c-802e-842ca019301b"><td id="?knp" class="" style="width:213px">RF0018</td><td id="HOtw" class="" style="width:346px">Visualizar Histórico de Questionários Respondidos</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="450e918b-daf6-48a1-9186-eb708ae921a7"><td id="?knp" class="" style="width:213px">RF0019</td><td id="HOtw" class="" style="width:346px">Validar Código de Resposta</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="192a6cd7-f8fd-43c3-9e1d-2dc47dab43be"><td id="?knp" class="" style="width:213px">RF0020</td><td id="HOtw" class="" style="width:346px">Receber feedback de preenchimento do cadastro</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr><tr id="354f2c78-b176-422e-8a71-c1cdaea5de5a"><td id="?knp" class="" style="width:213px">RF0021</td><td id="HOtw" class="" style="width:346px">Receber ajuda em atividades específicas na plataforma</td><td id="CWrV" class="" style="width:201.84375px">FEITO</td></tr></tbody></table><p id="0bb43cbc-92f6-44ae-92df-acb2179a0fa1" class="">
+</p><figure id="f83bf6df-a0b4-424d-972e-ba8c0b0e0541"><div class="source"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/QUESTS.txt">QUESTS.txt</a></div></figure><div id="9676bd42-d9af-4bbc-a2e1-d9dfcb4bc57b" class="collection-content"><h4 class="collection-title">Daily Quests</h4><table class="collection-content"><thead><tr><th><span class="icon property-icon"><img src="https://www.notion.so/icons/alien-pixel_gray.svg" style="width:14px;height:14px"/></span>Name</th><th><span class="icon property-icon"><img src="https://www.notion.so/icons/chart_gray.svg" style="width:14px;height:14px"/></span>Department</th></tr></thead><tbody><tr id="d249f5ff-5b33-44f0-bb97-051ca5478800"><td class="cell-title"><a href="https://www.notion.so/HTML-d249f5ff5b3344f0bb97051ca5478800?pvs=21"><img class="icon" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.iconscout.com%2Ficon%2Ffree%2Fpng-512%2Fhtml5-10-569380.png&amp;f=1&amp;nofb=1&amp;ipt=7e2b1c750f1af2abc9020940eb8683021eeadfcbb685907fdf1b2e6d6d3c2f90&amp;ipo=images"/>HTML</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-blue">Frontend</span><span class="selected-value select-value-color-pink">UI</span></td></tr><tr id="37859ec3-1dde-49d5-891a-9443c64f0f2e"><td class="cell-title"><a href="https://www.notion.so/Atualiza-es-do-backend-37859ec31dde49d5891a9443c64f0f2e?pvs=21"><img class="icon" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn3.iconfinder.com%2Fdata%2Ficons%2Fuser-interface-47%2F100%2FWeb_development-512.png&amp;f=1&amp;nofb=1&amp;ipt=9c320d0afdca95d4b86d0f25663def00b7df693b30cfecd1fafe7875f8390e7a&amp;ipo=images"/>Atualizações do backend</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-red">Backend</span></td></tr><tr id="f9a46d1c-de2c-4350-82c2-a75f27687f6d"><td class="cell-title"><a href="https://www.notion.so/Reestruturar-o-front-end-f9a46d1cde2c435082c2a75f27687f6d?pvs=21"><img class="icon" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fcdn.onlinewebfonts.com%2Fsvg%2Fimg_388593.png&amp;f=1&amp;nofb=1&amp;ipt=bb658c5d395be60148784d212fcfb985c6416367389229001089491b5ee9c48b&amp;ipo=images"/>Reestruturar o front end</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-blue">Frontend</span><span class="selected-value select-value-color-green">Ilustrator</span><span class="selected-value select-value-color-pink">UI</span></td></tr><tr id="2f525558-2a47-4223-a846-e2552afcc0e8"><td class="cell-title"><a href="https://www.notion.so/UX-2f5255582a474223a846e2552afcc0e8?pvs=21"><img class="icon" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fi1.wp.com%2Fwww.josephdickerson.com%2Fwp-content%2Fuploads%2F2015%2F11%2Fux-e1447171083544.png%3Fresize%3D562%252C376%26ssl%3D1&amp;f=1&amp;nofb=1&amp;ipt=21e82dcf17fd6870f92b3d1c076dd1f701cec4f92b36293e5c45124fd4ea0411&amp;ipo=images"/>UX</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-blue">Frontend</span><span class="selected-value select-value-color-pink">UI</span><span class="selected-value select-value-color-brown">UX</span></td></tr><tr id="7c24b9c4-1be6-42b7-8c21-ac3c1838b70b"><td class="cell-title"><a href="https://www.notion.so/Certificados-7c24b9c41be642b78c21ac3c1838b70b?pvs=21"><img class="icon" src="Quests%201de5642e81364156bb3eee1e002ea4a7/Daily%20Quests%209676bd42d9af4bbca2e1d9dfcb4bc57b/Certificados%207c24b9c41be642b78c21ac3c1838b70b/certificado_icon.svg"/>Certificados</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-red">Backend</span></td></tr><tr id="717ee8f4-b1fa-49df-a4bf-b41d42b73d99"><td class="cell-title"><a href="https://www.notion.so/Hist-rico-de-recompensas-717ee8f4b1fa49dfa4bfb41d42b73d99?pvs=21"><img class="icon" src="Quests%201de5642e81364156bb3eee1e002ea4a7/Daily%20Quests%209676bd42d9af4bbca2e1d9dfcb4bc57b/Histo%CC%81rico%20de%20recompensas%20717ee8f4b1fa49dfa4bfb41d42b73d99/historico_icon.svg"/>Histórico de recompensas</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-red">Backend</span><span class="selected-value select-value-color-blue">Frontend</span></td></tr><tr id="6e456e2f-24b1-43e9-be0a-c1c75b7d370e"><td class="cell-title"><a href="https://www.notion.so/Feedbacks-6e456e2f24b143e9be0ac1c75b7d370e?pvs=21"><span class="icon">☑️</span>Feedbacks</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-blue">Frontend</span></td></tr><tr id="f44f0204-01c2-49df-8601-2aaee0d23399"><td class="cell-title"><a href="https://www.notion.so/Tabuleiro-f44f020401c249df86012aaee0d23399?pvs=21"><span class="icon">🎲</span>Tabuleiro</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-red">Backend</span><span class="selected-value select-value-color-blue">Frontend</span><span class="selected-value select-value-color-green">Ilustrator</span></td></tr><tr id="eeee3ee5-0bba-4ee7-acf1-0215786c0819"><td class="cell-title"><a href="https://www.notion.so/Apps-Scripts-Biblioteca-eeee3ee50bba4ee7acf10215786c0819?pvs=21"><img class="icon" src="Quests%201de5642e81364156bb3eee1e002ea4a7/Daily%20Quests%209676bd42d9af4bbca2e1d9dfcb4bc57b/Apps%20Scripts%20-%20Biblioteca%20eeee3ee50bba4ee7acf10215786c0819/Group_1.png"/>Apps Scripts - Biblioteca</a></td><td class="cell-WOGg"><span class="selected-value select-value-color-red">Backend</span></td></tr></tbody></table><br/><br/></div><h2 id="60fb439b-c032-4d2d-978c-e16e2513bdee" class="">   📱 Technologies</h2><p id="573f925d-5db0-4691-aa1e-0ce03f90fd71" class="">
+</p><div id="521443b5-159b-493a-81d1-83f077a9b7ab" class="column-list"><div id="db30b2e1-3f7f-42b9-b2a0-615103563fac" style="width:33.33333333333333%" class="column"><figure id="9ecdd23c-6e32-4331-bdb9-844302e797ee" class="image" style="text-align:center"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/React-icon.svg.png"><img style="width:144px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/React-icon.svg.png"/></a></figure><p id="5f95f749-cb66-41fb-8195-45e3f00fae75" class="">
+</p><ul id="56124627-011a-4ace-976f-d63f7eb2778a" class="bulleted-list"><li style="list-style-type:disc">React for the front-end</li></ul><p id="131fd885-0500-44fb-9c11-6297efecc3fa" class="">
+</p></div><div id="d6652cd5-06c2-412a-b243-6e3afbd89188" style="width:37.500000000000014%" class="column"><figure id="5b11f0f3-ab82-4cdd-a41d-e5f55faaf00e" class="image" style="text-align:center"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/download.png"><img style="width:132px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/download.png"/></a></figure><p id="73248513-28ac-40cf-86ba-b121d4ab32e1" class=""><div class="indented"><ul id="c5d9d7bb-181d-4850-8714-e1c53cd40f54" class="bulleted-list"><li style="list-style-type:disc">Php for the back-end</li></ul><p id="08d5cd56-5806-4976-97be-9ff984edf66a" class="">
+</p></div></p></div><div id="9d3aa3e9-97f0-4b0b-ae97-197f89340a38" style="width:29.166666666666675%" class="column"><figure id="74f0dd38-ca70-40ef-a2e7-185bcbed93af" class="image" style="text-align:center"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/919836.png"><img style="width:132px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/919836.png"/></a></figure><p id="d30875fd-9cf2-48bb-9c7d-fb753cd524bb" class="">
+</p><ul id="1f589f13-1a9b-46e4-b041-27c7e3b98409" class="bulleted-list"><li style="list-style-type:disc">MySQL for the database</li></ul></div></div><div id="4ea8f687-379f-4979-b840-8741c2888b2d" class="column-list"><div id="57545ecd-121a-4375-96a7-a7046035ed2e" style="width:49.99999999999999%" class="column"><h2 id="3a9328f4-7d6c-4cd8-8d9e-4dc0b4bb9bfa" class="">  👥 Team Linos</h2><p id="fd076408-9e99-4f12-955b-1def779b84ab" class="">
+</p></div><div id="26b18f15-55ab-4940-bc19-3579dab1c016" style="width:50.000000000000014%" class="column"><p id="1f5974d6-b4ff-416e-b0e4-ec3b6c0f1f9a" class="">
+</p></div></div><figure id="fc32e620-1eb1-4f32-bdb0-2b4dcc3836b2" class="image"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/logo.png"><img style="width:72px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/logo.png"/></a></figure><div id="91b09436-0dc9-4ffc-a14f-0825a811e041" class="column-list"><div id="8cc2de3b-90bc-4289-a39e-511bfec4f950" style="width:33.333333333333336%" class="column"><p id="a40671de-8d05-4213-8101-5be5b71a96b1" class="">
+</p></div><div id="ea2b1d06-c71c-4bcb-b272-1f623083540d" style="width:33.333333333333336%" class="column"><p id="4af05914-0ea9-4de6-ab9d-59fe309a11ef" class="">linosdesignsmd@gmail.com</p></div><div id="b2c13992-8396-4c53-a10a-46370a4eec3a" style="width:33.33333333333333%" class="column"><p id="8f005283-2b1a-4ac2-bffe-8dfacdec5bbb" class="">
+</p></div></div><p id="4d64fdfb-cf2a-4f18-ad32-57b9fd7d3f51" class="">
+</p><div id="4c1fbddc-6c02-43ad-a88e-d00a3081797b" class="column-list"><div id="72f5f21f-6a66-4226-abae-a30c7ef2a173" style="width:16.66666666666667%" class="column"><figure id="e32393ff-7bd7-4348-aa05-30e0aa371e27" class="image" style="text-align:center"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_bear.png"><img style="width:75px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_bear.png"/></a><figcaption>      luiz</figcaption></figure></div><div id="1d24e1ec-f437-4fd9-80c2-ca4633babbf0" style="width:16.666666666666675%" class="column"><figure id="ca331e75-1cf0-4970-85f2-3924491c9432" class="image"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_tiger-face.png"><img style="width:75px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_tiger-face.png"/></a><figcaption>     clarao</figcaption></figure></div><div id="f8c82059-da73-4ea9-964e-8beb493fef3c" style="width:16.666666666666664%" class="column"><figure id="063a8be7-b51b-4681-a32a-addbb475bf4e" class="image"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/noto-v1_bird.png"><img style="width:75px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/noto-v1_bird.png"/></a><figcaption>      avie</figcaption></figure></div><div id="2a2767b0-6275-4c2b-9d06-2233543b2dc3" style="width:16.666666666666664%" class="column"><figure id="00856d5c-f0e4-48e5-ada0-0ffac19db33a" class="image"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_penguin.png"><img style="width:75px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_penguin.png"/></a><figcaption>     vitao</figcaption></figure></div><div id="734c233f-7534-4bb0-a6a5-00cf72325bcf" style="width:16.666666666666664%" class="column"><figure id="cb2613e8-8690-4245-bfc2-73d8f389d2b5" class="image"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_lion.png"><img style="width:75px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/noto_lion.png"/></a><figcaption>  letinepo</figcaption></figure></div><div id="cc3a6a97-74be-4eac-b585-8ee398964d33" style="width:16.666666666666664%" class="column"><figure id="aff9bc0c-9fdf-4330-94c4-ed9300acdde8" class="image"><a href="Quests%201de5642e81364156bb3eee1e002ea4a7/twemoji_koala.png"><img style="width:75px" src="Quests%201de5642e81364156bb3eee1e002ea4a7/twemoji_koala.png"/></a><figcaption>    mickas</figcaption></figure></div></div><table id="c8e07114-34b8-4e98-a951-db975c93f496" class="simple-table"><tbody><tr id="a0661d24-3df2-402b-8654-6c284c8ffca0"><td id="LXJ]" class="" style="width:152px"><strong>Membro</strong></td><td id="s]wi" class="" style="width:232.515625px"><strong>Email</strong></td><td id="IM}e" class="" style="width:274.5px"><strong>Função</strong></td><td id="DQ\O" class="" style="width:55px"><strong>Icon</strong></td></tr><tr id="bef6fe38-1d3b-47ea-a7ae-0c504fc51006"><td id="LXJ]" class="" style="width:152px"><strong>Luiz Gonzaga</strong></td><td id="s]wi" class="" style="width:232.515625px"><a href="mailto:luis.gsantosf@gmail.com">luis.gsantosf@gmail.com</a></td><td id="IM}e" class="" style="width:274.5px">Project Manager and UX Research</td><td id="DQ\O" class="" style="width:55px"><strong>🐻</strong></td></tr><tr id="a5bd57e6-adca-428f-ad15-7d223cbbc46d"><td id="LXJ]" class="" style="width:152px"><strong>Maria Clara</strong></td><td id="s]wi" class="" style="width:232.515625px"><a href="mailto:mariaclaraminion@gmail.com">mariaclaraminion@gmail.com</a></td><td id="IM}e" class="" style="width:274.5px">Full-stack Developer</td><td id="DQ\O" class="" style="width:55px"><strong>🐯</strong></td></tr><tr id="a051747c-12d5-41a2-a9b9-ed7ccddce53e"><td id="LXJ]" class="" style="width:152px"><strong>Vitória Jessica</strong></td><td id="s]wi" class="" style="width:232.515625px"><a href="mailto:ebvitoriajessica@gmail.com">ebvitoriajessica@gmail.com</a></td><td id="IM}e" class="" style="width:274.5px">Designer and illustrator</td><td id="DQ\O" class="" style="width:55px"><strong>🐦︎</strong></td></tr><tr id="5fadb083-39e9-4bbf-b3c6-79c52e305369"><td id="LXJ]" class="" style="width:152px"><strong>Victor Emanuel</strong></td><td id="s]wi" class="" style="width:232.515625px"><a href="mailto:victoremanuel.vet8@gmail.com">victoremanuel.vet8@gmail.com</a></td><td id="IM}e" class="" style="width:274.5px">Back-end Developer</td><td id="DQ\O" class="" style="width:55px">🐧</td></tr><tr id="59d1f822-d8d1-435b-9f26-427fa55f886c"><td id="LXJ]" class="" style="width:152px"><strong>Letícia Nepomuceno</strong></td><td id="s]wi" class="" style="width:232.515625px"><a href="mailto:leticianepomuceno23@gmail.com">leticianepomuceno23@gmail.com</a></td><td id="IM}e" class="" style="width:274.5px">UI/UX Designer</td><td id="DQ\O" class="" style="width:55px">🦁</td></tr><tr id="8f8346ee-2ca7-4415-8332-ddbe92580a50"><td id="LXJ]" class="" style="width:152px"><strong>Mickael Castro</strong></td><td id="s]wi" class="" style="width:232.515625px"><a href="mailto:mickaelcastro15@gmail.com">mickaelcastro15@gmail.com</a></td><td id="IM}e" class="" style="width:274.5px">Front-end Developer</td><td id="DQ\O" class="" style="width:55px">🐨</td></tr></tbody></table></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

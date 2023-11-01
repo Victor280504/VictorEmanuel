@@ -1,0 +1,10 @@
+﻿Responsible,ID,Name,Department,Date,Status,Descrição
+Victor,RF00-17,HTML,"Frontend, UI",,Not started,
+Victor,RF00-16,Atualizações do backend,Backend,,Not started,
+Victor,RF00-15,Reestruturar o front end,"Frontend, Ilustrator, UI",,Not started,
+Victor,RF00-13,UX,"Frontend, UI, UX",,Not started,
+Victor,RF00-12,Certificados,Backend,,Not started,Enviar por email e guardar pdf no banco de dados para criar um histórico de certificados
+Victor,RF00-11,Histórico de recompensas,"Backend, Frontend",,Not started,
+Victor,RF00-10,Feedbacks,Frontend,,Not started,Planejar os Feedbakcs e definir quais informações de validação
+Victor,RF00-8,Tabuleiro,"Backend, Frontend, Ilustrator",,Not started,"Finalizar todas as pendências do tabuleiro, incluindo feedbacks, funcionalidade, design e implementação"
+Victor,RF00-7,Apps Scripts - Biblioteca,Backend,"July 17, 2023 → July 19, 2023",Not started,Pesquisar a versatilidade do apps scripts para fechar o fluxo de interação com uma boa experiência de usuário para ambos os perfis. Visa aprofundar os conhecimentos em apps scripts para melhorar a versatilidade do código atual e torná-lo versátil ao contexto do usuário pesquisador
